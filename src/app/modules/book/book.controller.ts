@@ -31,7 +31,8 @@ const getAllBooks: RequestHandler = async (req: Request, res: Response) => {
 
 const getSingleBook: RequestHandler = async (req: Request, res: Response) => {
     try {
-        const book = await BookService.getSingleBook(req.params.id);
+        const id = req.params.id;
+        const book = await BookService.getSingleBook(id);
         res.send({ status: true, data: book });
     } catch (error) {
         console.error(`\x1B[31mError fetching books:, ${error}`);
@@ -42,8 +43,23 @@ const getSingleBook: RequestHandler = async (req: Request, res: Response) => {
     }
 };
 
+const updateBook: RequestHandler = async (req: Request, res: Response) => {
+    try {
+        const id = req.params.id;
+        const updatedData = req.body;
+        const updatedCow = await BookService.updateBook(id, updatedData);
+        res.send({ status: true, data: updatedCow });
+    } catch (error) {
+        console.error(`\x1B[31mError fetching books:, ${error}`);
+
+        res.status(500).json({
+            error: "An error occurred while updating the book",
+        });
+    }
+};
+
 export const BookController = {
     createBook,
     getAllBooks,
-    getSingleBook,
+    getSingleBook,updateBook
 };
