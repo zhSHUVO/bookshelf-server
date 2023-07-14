@@ -16,6 +16,18 @@ const createBook: RequestHandler = async (req: Request, res: Response) => {
     }
 };
 
+const getBooks: RequestHandler = async (req: Request, res: Response) => {
+    try {
+        const allBooks = await BookService.getBooks();
+        res.send({ status: true, data: allBooks });
+    } catch (error) {
+        console.error("Error fetching books:", error);
+        res.status(500).json({
+            error: "An error occurred while fetching books",
+        });
+    }
+};
+
 export const BookController = {
-    createBook,
+    createBook,getBooks
 };

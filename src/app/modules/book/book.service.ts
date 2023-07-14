@@ -6,6 +6,11 @@ const createBook = async (book: IBook): Promise<IBook | null> => {
     return newBook;
 };
 
+const getBooks = async () => {
+    const books = await Book.find();
+    return books;
+};
+
 export const BookService = {
-    createBook,
+    createBook,getBooks
 };
