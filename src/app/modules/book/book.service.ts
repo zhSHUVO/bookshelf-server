@@ -29,7 +29,7 @@ const updateBook = async (
     return updatedBook;
 };
 
-const deleteBook = async (id: string) => {
+const deleteBook = async (id: string): Promise<IBook | null> => {
     const deletedBook = await Book.findByIdAndDelete({ _id: id });
     return deletedBook;
 };
