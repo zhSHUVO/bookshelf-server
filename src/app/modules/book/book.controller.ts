@@ -35,7 +35,7 @@ const getSingleBook: RequestHandler = async (req: Request, res: Response) => {
         const book = await BookService.getSingleBook(id);
         res.send({ status: true, data: book });
     } catch (error) {
-        console.error(`\x1B[31mError fetching books:, ${error}`);
+        console.error(`\x1B[31mError fetching book:, ${error}`);
 
         res.status(500).json({
             error: "An error occurred while fetching the book",
@@ -50,7 +50,7 @@ const updateBook: RequestHandler = async (req: Request, res: Response) => {
         const updatedCow = await BookService.updateBook(id, updatedData);
         res.send({ status: true, data: updatedCow });
     } catch (error) {
-        console.error(`\x1B[31mError fetching books:, ${error}`);
+        console.error(`\x1B[31mError updating book:, ${error}`);
 
         res.status(500).json({
             error: "An error occurred while updating the book",
@@ -58,8 +58,24 @@ const updateBook: RequestHandler = async (req: Request, res: Response) => {
     }
 };
 
+const deleteBook: RequestHandler = async (req: Request, res: Response) => {
+    try {
+        const id = req.params.id;
+        const deletedCow = await BookService.deleteBook(id);
+        res.send({ status: true, data: deletedCow });
+    } catch (error) {
+        console.error(`\x1B[31mError deleting book:, ${error}`);
+
+        res.status(500).json({
+            error: "An error occurred while deleting the book",
+        });
+    }
+};
+
 export const BookController = {
     createBook,
     getAllBooks,
-    getSingleBook,updateBook
+    getSingleBook,
+    updateBook,
+    deleteBook,
 };
