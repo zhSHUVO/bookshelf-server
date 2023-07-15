@@ -8,7 +8,7 @@ const createBook = async (book: IBook): Promise<IBook | null> => {
 };
 
 const getAllBooks = async (): Promise<IBook[]> => {
-    const allBooks = await Book.find();
+    const allBooks = await Book.find().sort({ updatedAt: "desc" });
     return allBooks;
 };
 
