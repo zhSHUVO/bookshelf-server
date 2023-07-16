@@ -12,6 +12,7 @@ router
     .route("/:id")
     .get(BookController.getSingleBook)
     .patch(BookController.updateBook)
-    .delete(BookController.deleteBook);
+    .delete(BookController.deleteBook)
+    .post(BookController.postReview);
 
 export const BookRoute = router;

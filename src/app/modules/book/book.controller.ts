@@ -72,10 +72,29 @@ const deleteBook: RequestHandler = async (req: Request, res: Response) => {
     }
 };
 
+const postReview: RequestHandler = async (req: Request, res: Response) => {
+    try {
+       
+        const bookId = req.params.id;
+        const review = req.body.review;
+        const email = req.body.email;
+
+        const newReview = await BookService.postReview(bookId, email, review);
+        res.send({ status: true, data: newReview });
+    } catch (error) {
+        console.error(`\x1B[31mError posting review:, ${error}`);
+
+        res.status(500).json({
+            error: "An error occurred while adding the review",
+        });
+    }
+};
+
 export const BookController = {
     createBook,
     getAllBooks,
     getSingleBook,
     updateBook,
     deleteBook,
+    postReview,
 };

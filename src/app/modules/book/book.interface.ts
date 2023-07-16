@@ -1,10 +1,5 @@
 import { Model } from "mongoose";
 
-export type IPubDate = {
-    month: string;
-    year: number;
-};
-
 export type IBook = {
     title: string;
     author: string;
@@ -12,6 +7,7 @@ export type IBook = {
     price: number;
     genre: string;
     publicationDate: string;
+    reviews: object;
 };
 
 export type BookModel = Model<IBook, Record<string, unknown>>;
