@@ -4,7 +4,7 @@ import configuration from "./config";
 
 async function main() {
     try {
-        await mongoose.connect(configuration.mongodb_compass_url as string);
+        await mongoose.connect(configuration.mongodb_database_url as string);
         app.listen(configuration.port, () => {
             console.log(
                 "\x1b[32m%s\x1b[0m",
