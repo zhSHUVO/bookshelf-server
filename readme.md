@@ -98,13 +98,7 @@ This project is dependent on/interconnected with another frontend project. Front
     ```shell
     npm install
     ```
-4. Start the development server:
-    ```shell
-    npm run dev
-    ```
-5. Development server will run on `http://localhost:5000`.
-
-6. Setup .env file. Example:
+4. Setup .env file. Example:
 
     ```shell
     PORT=---------
@@ -114,7 +108,11 @@ This project is dependent on/interconnected with another frontend project. Front
     MONGODB_COMPASS_URL=---------
     ```
 
-Make sure to configure the MongoDB connection and other necessary environment variables as per your development environment.
+5. Start the development server:
+    ```shell
+    npm run dev
+    ```
+6. Development server will run on `http://localhost:5000`
 
 ## License
 
